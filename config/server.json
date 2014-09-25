@@ -1,0 +1,10 @@
+{
+	"hostname":		"127.0.0.1:8080",
+	"listen_port":	8080,
+	"nexmo":	{
+		"key": 			"NEXMO_KEY_HERE",
+		"secret":		"NEXMO_SECRET_HERE",
+		"transport":		"https",
+		"debug":		true
+	}
+}

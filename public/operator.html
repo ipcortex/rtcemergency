@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+		The mobile DDI displayed on this page is a fake, invalid one from a range allocated by Ofcom for "theatrical"
+		use. Behind-the-scenes it will actually use whatever the real number is.
+		-->
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Operator Console</title>
+		<link rel="stylesheet" href="/assets/css/bootstrap.css" />
+		<link rel="stylesheet" href="/assets/css/font-awesome.css" />
+		<link rel="stylesheet" href="/assets/css/operator.css" />
+		<script type="text/javascript" src="/assets/js/class.js"></script>
+		<script type="text/javascript" src="/assets/js/jquery.js"></script>
+		<script type="text/javascript" src="/assets/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7skokNXdrO6r-wlVdwFjux-ecAMLa4gs&amp;sensor=false"></script>
+		<script type="text/javascript" src="https://call.webrtc.nu:8443/api/jssip/jssip-0.4.0-devel.js"></script>
+		<script type="text/javascript" src="https://call.webrtc.nu:8443/api/wrapper.whtm"></script>
+		<script type="text/javascript" src="/assets/js/adapter.js"></script>
+		<script type="text/javascript" src="/assets/js/operator.js"></script>
+		<script type="text/javascript" src="/assets/js/utils.js"></script>
+		<script type="text/javascript" src="/assets/js/rtc.js"></script>
+	</head>
+	<body onload="onLoad();" onbeforeunload="onUnload();">
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul id="tabs-main" class="nav nav-sidebar">
+				<li class="active"><a href="#incoming-call" data-toggle="tab">Incoming calls</a></li>
+				<li class="disabled"><a href="#active-call" data-toggle="tab">Active call</a></li>
+				<!--<li><a href="#dispatchers" data-toggle="tab">Dispatchers</a></li>-->
+			</ul>
+		</div>
+		<div class="col-sm-offset-3 col-sm-9 col-md-offset-2 col-md-10 main tab-content">
+			<div id="incoming-call" class="tab-pane active">
+				<h1 class="page-header">Incoming Calls</h1>
+				<p class="lead">A really nice list of all inbound calls would be shown here. But we're short on time, so here's a button instead:</p>
+				<button id="btn-answer" type="button" class="btn btn-success"><span class="fa fa-play"></span> Answer</button>
+			</div>
+			<div id="active-call" class="tab-pane">
+				<div class="row">
+					<div class="col-md-5">
+						<h1 class="page-header" id="caller-id">Call in progress with 07700900436</h1>
+						<div class="btn-group btn-group-justified" style="margin-bottom: 1em;">
+							<div class="btn-group">
+								<button id="btn-sendtxt" type="button" class="btn btn-info"><span class="fa fa-video-camera"></span> Request</button>
+							</div>
+							<div class="btn-group">
+								<button id="btn-pausecall" type="button" class="btn btn-warning"><span class="fa fa-pause"></span> Hold</button>
+							</div>
+							<div class="btn-group">
+								<button id="btn-hangupcall" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-phone-alt"></span> Hang up</button>
+							</div>
+						</div>
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Severity</label>
+								<div class="col-sm-9">
+									<select id="emeg-severity" class="form-control">
+										<option>Low</option>
+										<option>Medium</option>
+										<option>High</option>
+										<option>Critical</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="emeg-priority" class="col-sm-3 control-label">Call Priority</label>
+								<div class="col-sm-9">
+									<select id="emeg-priority" class="form-control">
+										<option>Routine</option>
+										<option>Urgent</option>
+										<option>Life-threatening</option>
+									</select>
+								</div>
+							</div>
+						</form>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Emergency Type</label>
+							<div class="col-sm-9">
+								<div class="checkbox">
+									<label>
+										<input id="emeg-type-medical" type="checkbox" />
+										Medical
+									</label>
+								</div>
+								<div class="checkbox">
+									<label>
+										<input id="emeg-type-fire" type="checkbox" />
+										Fire
+									</label>
+								</div>
+								<div class="checkbox">
+									<label>
+										<input id="emeg-type-police" type="checkbox" />
+										Police
+									</label>
+								</div>
+							</div>
+						</div>
+						<h1 class="page-header">Available</h1>
+						<div id="agents">
+
+						</div>
+					</div>
+					<div class="col-md-7">
+						<div id="video-feeds">
+							<div class="fa fa-video-camera video-icon"></div>
+						</div>
+						<div id="map">
+							<div class="fa fa-map-marker map-icon"></div>
+						</div>
+						<video id="caller-webrtc-call" class="hidden" autoplay></video>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+@import "shared.css";
+
+html, body {
+	height:			100%;
+	background-color:	#d9534f;
+	color:			#FFFFFF;
+}
+
+#map {
+	z-index:	100;
+	position:	absolute;
+	right:		3px;
+	bottom:		3px;
+	width:		200px;
+	height:		150px;
+	border-radius:	4px;
+	opacity:	0.8;
+	overflow:	hidden;
+	border:		1px solid #949494;
+}
+
+#video-feeds {
+	width:		650px;
+	height:		490px;
+	margin-top:	20px;
+	margin-bottom:	20px;
+	position:	relative;
+	border-radius:	4px;
+	border:		1px solid #949494;
+	background:	#eeeeee;
+}
+
+.video-icon {
+	position:	absolute;
+	left:		275px;
+	top:		195px;
+	font-size:	100px;
+	color:		#949494;
+}
+
+.feed {
+	z-index:	50;
+	position:	absolute;
+}

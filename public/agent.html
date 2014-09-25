@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Dispatcher</title>
+		<link rel="stylesheet" href="/assets/css/bootstrap.css" />
+		<link rel="stylesheet" href="/assets/css/font-awesome.css" />
+		<link rel="stylesheet" href="/assets/css/agent.css" />
+	</head>
+	<body onload="onLoad();" onbeforeunload="onUnload();">
+		<div class="site-wrapper">
+			<div class="site-wrapper-inner">
+				<div class="cover-container">
+					<div class="inner cover">
+						<div id="video-feeds">
+							<div class="fa fa-video-camera video-icon"></div>
+							<div id="map"></div>
+						</div>
+						<p class="lead" id="status-icon"><span class="fa fa-times-circle fa-5x"></span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="/assets/js/class.js"></script>
+		<script type="text/javascript" src="/assets/js/jquery.js"></script>
+		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7skokNXdrO6r-wlVdwFjux-ecAMLa4gs&amp;sensor=false"></script>
+		<script type="text/javascript" src="/assets/js/adapter.js"></script>
+		<script type="text/javascript" src="/assets/js/agent.js"></script>
+		<script type="text/javascript" src="/assets/js/utils.js"></script>
+		<script type="text/javascript" src="/assets/js/rtc.js"></script>
+	</body>
+</html>
